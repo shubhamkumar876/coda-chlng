@@ -1,0 +1,56 @@
+<div>
+    <h2>CODA Challenge</h2>
+    <button class="btn btn-primary" (click)="getData()">ok</button>
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <table class="table table-striped">
+              <thead *ngIf="players.length > 0" class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Bet</th>
+                  <th>Price</th>
+                  <th>Image</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let tempPlayer of players">
+                <td>{{ tempPlayer.Name }}</td>
+                <td>{{ tempPlayer.Bet }}</td>
+                <td>{{ tempPlayer.Price }}</td>
+                <td>
+                  <img src="{{ tempPlayer['Profile Image'] }}" width="150px" />
+                </td>
+              </tr>
+            </table>
+            <a *ngIf="players.length == 3" routerLink="/result" class="btn btn-primary">Start</a>
+            
+          </div>
+          <div class="col-8">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Add</th>
+                  <th>Name</th>
+                  <th>Bet</th>
+                  <th>Price</th>
+                  <th>Image</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let temp of users">
+                <td>
+                  <button class="btn btn-info" (click)="Players(temp)">Add</button>
+                </td>
+                <td>{{ temp.Name }}</td>
+                <td>{{ temp.Bet }}</td>
+                <td>{{ temp.Price }}</td>
+                <td>
+                  <img src="{{ temp['Profile Image'] }}" width="150px" />
+                  <!-- {{ temp["Profile Image"]}} -->
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>  
+          <!-- <button class="btn btn-primary">Start</button> -->
+        </div>
+    </div>

@@ -1,14 +1,13 @@
-import { OnInit } from '@angular/core';
-import { Component } from '@angular/core';
-import { User } from './common/user';
-import { UserService } from './services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class AppComponent implements OnInit{
+export class UserComponent implements OnInit {
+
   title = 'coda-chlng';
 
 
@@ -49,4 +48,5 @@ export class AppComponent implements OnInit{
       console.log("app-component" + temp);
     }
   }
+
 }
