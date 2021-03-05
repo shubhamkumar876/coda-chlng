@@ -61,6 +61,7 @@ export class UserService {
 
   reset(){
     this.players = [];
+    sessionStorage.clear();
     this.router.navigateByUrl('/result');
   }
 }

@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
-        <h2>Opposing Bet = {{ winBet }}!</h2>
+        <h2 *ngIf="selectedPlayers.length > 0">Opposing Bet = {{ winBet }}!</h2>
         <div class="container-fluid">
       
       <!-- <button class="btn btn-primary" (click)="getData()">ok</button> -->
