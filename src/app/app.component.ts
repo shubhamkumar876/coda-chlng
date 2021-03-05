@@ -11,6 +11,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit{
   title = 'coda-chlng';
 
+  public filter: any;
 
   users: Array<any> = [];
   players: Array<any> = [];

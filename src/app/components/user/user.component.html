@@ -1,10 +1,13 @@
-<div>
-    <h2>CODA Challenge</h2>
-    <button class="btn btn-primary" (click)="getData()">ok</button>
-      <div class="container">
+<div class="main-content">
+  <div class="section-content section-content-p30">
+      <div class="container-fluid">
+    <!-- <h2>CODA Challenge</h2> -->
+    <!-- <button class="btn btn-primary" (click)="getData()">ok</button> -->
+      <!-- <div class="container"> -->
         <div class="row">
-          <div class="col-4">
-            <table class="table table-striped">
+          <div class="col-6">
+            <div class="table table-responsive">
+              <table class="table table-hover">
               <thead *ngIf="players.length > 0" class="thead-dark">
                 <tr>
                   <th>Name</th>
@@ -18,25 +21,27 @@
                 <td>{{ tempPlayer.Bet }}</td>
                 <td>{{ tempPlayer.Price }}</td>
                 <td>
-                  <img src="{{ tempPlayer['Profile Image'] }}" width="150px" />
+                  <img src="{{ tempPlayer['Profile Image'] }}" width="50px" />
                 </td>
               </tr>
+              
             </table>
-            <a *ngIf="players.length == 3" routerLink="/result" class="btn btn-primary">Start</a>
+            <a *ngIf="players.length >= 3" routerLink="/result" class="btn btn-primary">Start</a>
             
           </div>
-          <div class="col-8">
+          </div>
+          <div class="col-6">
             <table class="table table-striped">
               <thead class="thead-dark">
                 <tr>
                   <th>Add</th>
-                  <th>Name</th>
-                  <th>Bet</th>
-                  <th>Price</th>
+                  <th (click)="sort('Name')">Name</th>
+                  <th (click)="sort('Bet')">Bet</th>
+                  <th (click)="sort('Price')">Price</th>
                   <th>Image</th>
                 </tr>
               </thead>
-              <tr *ngFor="let temp of users">
+              <tr *ngFor="let temp of users | orderBy: key : reverse| filter:appcomponent.filter | paginate: { itemsPerPage: 8, currentPage: p }">
                 <td>
                   <button class="btn btn-info" (click)="Players(temp)">Add</button>
                 </td>
@@ -44,11 +49,14 @@
                 <td>{{ temp.Bet }}</td>
                 <td>{{ temp.Price }}</td>
                 <td>
-                  <img src="{{ temp['Profile Image'] }}" width="150px" />
+                  <img src="{{ temp['Profile Image'] }}" width="100px" />
                   <!-- {{ temp["Profile Image"]}} -->
                 </td>
               </tr>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </table>
+          </div>
+          
           </div>
         </div>  
           <!-- <button class="btn btn-primary">Start</button> -->

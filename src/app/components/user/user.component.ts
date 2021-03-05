@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,11 +11,15 @@ export class UserComponent implements OnInit {
 
   title = 'coda-chlng';
 
+  p:number = 1;
 
   users: Array<any> = [];
   players: Array<any> = [];
 
-  constructor(private userservice: UserService){
+  public filter: any = this.appcomponent.filter;
+
+  constructor(private userservice: UserService,
+              public appcomponent:AppComponent){
 
     this.users = new Array<any>();
     this.players = new Array<any>();
@@ -22,12 +27,19 @@ export class UserComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    
+    this.getData();
   }
 
   Players(player: any) {
 
     this.players.push(player);
+  }
+
+  key: string = 'Name'; 
+  reverse: boolean = false;
+  sort(key:any){
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
   getData() {
