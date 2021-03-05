@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <h2>Opposing Bet = {{ winBet }}!</h2>
+        <div class="container-fluid">
+      
+      <!-- <button class="btn btn-primary" (click)="getData()">ok</button> -->
+        <!-- <div class="container"> -->
+          <div class="row">
+            <div class="col-10">
+              <div class="table table-responsive">
+                <table class="table table-hover">
+                <thead *ngIf="selectedPlayers.length > 0" class="thead-dark">
+                  <tr>
+                    <th>Name</th>
+                    <th>Bet</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Fate</th>
+                    <th>Winings</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tr *ngFor="let tempPlayer of selectedPlayers">
+                  <td>{{ tempPlayer.Name }}</td>
+                  <td>{{ tempPlayer.Bet }}</td>
+                  <td>{{ tempPlayer.Price }}</td>
+                  <td>
+                    <img src="{{ tempPlayer['Profile Image'] }}" width="50px" />
+                  </td>
+                  <td *ngIf="tempPlayer.Bet == winBet">Win</td>
+                  <td *ngIf="tempPlayer.Bet != winBet">Lose</td>
+                  <td *ngIf="tempPlayer.Bet == winBet">{{ 2 * tempPlayer.Price }}</td>
+                  <td *ngIf="tempPlayer.Bet != winBet">0</td>
+                  <td><button class="btn btn-info" (click)="userService.remove(tempPlayer)">Remove</button></td>
+                </tr>
+                
+              </table>
+
+
+              </div>
+              <button class="btn btn-info" (click)="userService.reset()">Back</button>
+              </div>
+              </div>
+              </div>
+            </div>
+        </div>

@@ -9,9 +9,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OutcomeComponent } from './components/outcome/outcome.component';
 
 const routes: Routes = [
+  {path:'outcome', component:OutcomeComponent},
   {path:'result', component:UserComponent},
   {path: '', redirectTo: '/result', pathMatch: 'full'},
   {path: '**', redirectTo: '/result', pathMatch: 'full'}
@@ -21,7 +23,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    OutcomeComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -30,9 +33,10 @@ const routes: Routes = [
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService,UserComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

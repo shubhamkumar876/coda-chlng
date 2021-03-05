@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { AppComponent } from 'src/app/app.component';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,13 +17,16 @@ export class UserComponent implements OnInit {
   users: Array<any> = [];
   players: Array<any> = [];
 
+
   public filter: any = this.appcomponent.filter;
 
   constructor(private userservice: UserService,
               public appcomponent:AppComponent){
 
     this.users = new Array<any>();
-    this.players = new Array<any>();
+   this.players = new Array<any>();
+
+   
     
   }
   ngOnInit(): void {
@@ -33,6 +37,11 @@ export class UserComponent implements OnInit {
   Players(player: any) {
 
     this.players.push(player);
+
+    const selectedPlayers = player;
+
+  this.userservice.addToPlayer(selectedPlayers);
+    
   }
 
   key: string = 'Name'; 
@@ -60,5 +69,6 @@ export class UserComponent implements OnInit {
       console.log("app-component" + temp);
     }
   }
+
 
 }
