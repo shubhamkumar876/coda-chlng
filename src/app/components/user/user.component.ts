@@ -44,7 +44,7 @@ export class UserComponent implements OnInit {
     
   }
 
-  key: string = 'Name'; 
+  key: string = ''; 
   reverse: boolean = false;
   sort(key:any){
     this.key = key;

@@ -36,9 +36,18 @@
               <thead class="thead-dark">
                 <tr>
                   <th>Add</th>
-                  <th (click)="sort('Name')">Name</th>
-                  <th (click)="sort('Bet')">Bet</th>
-                  <th (click)="sort('Price')">Price</th>
+                  <th (click)="sort('Name')">
+                    <span *ngIf="reverse && key=='Name'" class="material-icons md-10">expand_less</span>
+                    <span *ngIf="!reverse && key=='Name'" class="material-icons md-10">expand_more</span>
+                    <span *ngIf="key!='Name'" class="material-icons">unfold_more</span>  Name</th>
+                  <th (click)="sort('Bet')">
+                    <span *ngIf="reverse  && key=='Bet'" class="material-icons md-10">expand_less</span>
+                    <span *ngIf="!reverse && key=='Bet'" class="material-icons md-10">expand_more</span>
+                    <span *ngIf="key!='Bet'" class="material-icons">unfold_more</span>   Bet</th>
+                  <th (click)="sort('Price')"> 
+                    <span *ngIf="reverse  && key=='Price'" class="material-icons md-10">expand_less</span>
+                    <span *ngIf="!reverse && key=='Price'" class="material-icons md-10">expand_more</span>
+                    <span *ngIf="key!='Price'" class="material-icons">unfold_more</span>    Price</th>
                   <th>Image</th>
                 </tr>
               </thead>
